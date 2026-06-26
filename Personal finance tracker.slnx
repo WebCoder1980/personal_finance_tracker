@@ -1,4 +1,6 @@
 <Solution>
+  <Project Path="ApiGateway/ApiGateway.csproj" />
   <Project Path="PersonalFinanceTracker.AppHost/PersonalFinanceTracker.AppHost.csproj" />
   <Project Path="PersonalFinanceTracker.ServiceDefaults/PersonalFinanceTracker.ServiceDefaults.csproj" />
+  <Project Path="Transactions/Transactions.csproj" />
 </Solution>

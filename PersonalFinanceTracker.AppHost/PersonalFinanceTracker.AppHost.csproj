@@ -8,4 +8,9 @@
     <UserSecretsId>0e7ba104-39b1-471b-88fe-3dbe3922cdfc</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ApiGateway\ApiGateway.csproj" />
+    <ProjectReference Include="..\Transactions\Transactions.csproj" />
+  </ItemGroup>
+
 </Project>
