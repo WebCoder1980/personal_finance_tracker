@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Personal finance tracker.AppHost/Personal finance tracker.AppHost.csproj" />
+  <Project Path="Personal finance tracker.ServiceDefaults/Personal finance tracker.ServiceDefaults.csproj" />
+</Solution>
