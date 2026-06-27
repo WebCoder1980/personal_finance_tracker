@@ -4,4 +4,10 @@ builder.AddProject<Projects.ApiGateway>("apigateway");
 
 builder.AddProject<Projects.Transactions>("transactions");
 
-builder.Build().Run();
+var database = builder.AddPostgres("user-postgres")
+    .AddDatabase("user-database");
+builder.AddProject<Projects.Users>("users")
+    .WithReference(database);
+
+builder.Build()
+    .Run();

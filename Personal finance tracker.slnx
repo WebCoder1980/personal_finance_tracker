@@ -3,4 +3,5 @@
   <Project Path="PersonalFinanceTracker.AppHost/PersonalFinanceTracker.AppHost.csproj" />
   <Project Path="PersonalFinanceTracker.ServiceDefaults/PersonalFinanceTracker.ServiceDefaults.csproj" />
   <Project Path="Transactions/Transactions.csproj" />
+  <Project Path="Users/Users.csproj" />
 </Solution>
