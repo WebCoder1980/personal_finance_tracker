@@ -41,7 +41,8 @@ namespace Users.Service
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, request.UserName),
-                new Claim(ClaimTypes.Role, user.Role)
+                new Claim(ClaimTypes.Role, user.Role),
+                new Claim("user_id", user.Id.ToString())
             };
 
             SigningCredentials credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);

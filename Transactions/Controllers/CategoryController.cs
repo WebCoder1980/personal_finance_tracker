@@ -10,8 +10,7 @@ namespace Transactions.Controllers;
 public class CategoryController : ControllerBase
 {
     private readonly ICategoryService _service;
-
-    public CategoryController(ICategoryService service)
+    public CategoryController(ICategoryService service, IHttpContextAccessor httpContextAccessor)
     {
         _service = service;
     }

@@ -14,7 +14,7 @@
     public class InvalidCredentialsException : AuthException
     {
         public InvalidCredentialsException()
-            : base("invalid_credentials", "Неверный логин или пароль")
+            : base("invalid_credentials", "Invalid credentials.")
         {
         }
     }
@@ -22,7 +22,7 @@
     public class UserAlreadyExistsException : AuthException
     {
         public UserAlreadyExistsException()
-            : base("user_already_exists", "Пользователь уже занят")
+            : base("user_already_exists", "User is already exists.")
         {
         }
     }

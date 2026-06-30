@@ -48,6 +48,7 @@ builder.Services.AddAuthentication(authOptions =>
         ValidAudience = audience,
         IssuerSigningKey = new SymmetricSecurityKey(keyBytes)
     };
+    jwtOptions.MapInboundClaims = false;
 });
 
 builder.Services.AddOpenApi(options =>

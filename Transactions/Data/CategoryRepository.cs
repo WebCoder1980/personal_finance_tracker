@@ -12,11 +12,12 @@ namespace Transactions.Data
             _db = db;
         }
 
-        public async Task<IReadOnlyCollection<Category>> GetAsync(CancellationToken cancellationToken)
+        public async Task<IReadOnlyCollection<Category>> GetAsync(long userId, CancellationToken cancellationToken)
         {
             return await _db.Categories
                 .AsNoTracking()
                 .Include(category => category.Type)
+                .Where(category => category.UserId == userId)
                 .ToListAsync(cancellationToken);
         }
     }

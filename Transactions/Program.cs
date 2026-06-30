@@ -4,6 +4,7 @@ using Microsoft.OpenApi;
 using System.Text;
 using Transactions.Data;
 using Transactions.Service;
+using Transactions.Service.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,12 +37,14 @@ builder.Services.AddAuthentication(authOptions =>
         ValidAudience = audience,
         IssuerSigningKey = new SymmetricSecurityKey(keyBytes)
     };
+    jwtOptions.MapInboundClaims = false;
 });
 
 builder.AddNpgsqlDbContext<AppDbContext>("transaction-database");
 
 builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 
 builder.Services.AddOpenApi(options =>
 {
@@ -70,6 +73,8 @@ builder.Services.AddOpenApi(options =>
         return Task.CompletedTask;
     });
 });
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
