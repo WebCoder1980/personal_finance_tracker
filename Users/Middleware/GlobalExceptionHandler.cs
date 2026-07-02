@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Security.Authentication;
 using System.Text.Json;
@@ -34,12 +35,11 @@ namespace Users.Middleware
                     (int)HttpStatusCode.BadRequest,
                     "invalid_data_exception",
                     ex.Message),
-
                 _ => (
-                    (int)HttpStatusCode.InternalServerError,
-                    "internal_error",
-                    "Internal server error")
-            };
+                        (int)HttpStatusCode.InternalServerError,
+                        "internal_error",
+                        "Internal server error")
+                };
 
             context.Response.StatusCode = statusCode;
 

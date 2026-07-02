@@ -2,6 +2,6 @@
 {
     public interface ICurrentUser
     {
-        long? Id { get; }
+        long Id { get; }
     }
 }

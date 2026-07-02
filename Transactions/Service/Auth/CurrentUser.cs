@@ -9,13 +9,12 @@
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public long? Id {
+        public long Id {
             get
             {
-                string? idStr = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(claim => claim.Type == "user_id")?.Value;
-                if (idStr is null) {
-                    return null;
-                }
+                string idStr = _httpContextAccessor.HttpContext?.User.Claims
+                    .FirstOrDefault(claim => claim.Type == "user_id")?.Value
+                    ?? throw new UnauthorizedAccessException("JWT does not contain 'user_id'.");
                 long id;
                 if (!long.TryParse(idStr, out id))
                 {
