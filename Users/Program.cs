@@ -4,6 +4,7 @@ using Microsoft.OpenApi;
 using System.Text;
 using Users.Data;
 using Users.Dtos;
+using Users.MessageBuses;
 using Users.Middleware;
 using Users.Service;
 
@@ -16,8 +17,10 @@ builder.AddServiceDefaults();
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.AddRabbitMQClient("rabbitmq");
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddSingleton<IMessageBus, RabbitMqMessageBus>();
 
 builder.AddNpgsqlDbContext<AppDbContext>("user-database");
 

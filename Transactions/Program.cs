@@ -5,10 +5,12 @@ using System.Text;
 using Transactions.Data;
 using Transactions.Service;
 using Transactions.Service.Auth;
+using Users.MessageBuses;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+builder.AddRabbitMQClient("rabbitmq");
 
 // Add services to the container.
 
@@ -45,8 +47,10 @@ builder.Services.AddAuthentication(authOptions =>
 builder.AddNpgsqlDbContext<AppDbContext>("transaction-database");
 
 builder.Services.AddScoped<CategoryRepository>();
+builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICurrentUser, CurrentUser>();
+builder.Services.AddHostedService<RabbitMqMessageBus>();
 
 builder.Services.AddOpenApi(options =>
 {

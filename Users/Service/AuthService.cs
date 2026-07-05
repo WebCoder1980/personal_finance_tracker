@@ -8,6 +8,7 @@ using Users.Constants;
 using Users.Data;
 using Users.Dtos;
 using Users.Exceptions;
+using Users.MessageBuses;
 using Users.Models;
 
 namespace Users.Service
@@ -16,11 +17,13 @@ namespace Users.Service
     {
         private readonly JwtOptions _jwtOptions;
         private readonly AppDbContext _dbContext;
+        private readonly IMessageBus _messageBus;
 
-        public AuthService(IOptions<JwtOptions> jwtOptions, AppDbContext dbContext)
+        public AuthService(IOptions<JwtOptions> jwtOptions, AppDbContext dbContext, IMessageBus messageBus)
         {
             _jwtOptions = jwtOptions.Value;
             _dbContext = dbContext;
+            _messageBus = messageBus;
         }
         public async Task<LoginResponse?> Login(Dtos.LoginRequest request)
         {
@@ -78,6 +81,8 @@ namespace Users.Service
 
             _dbContext.Users.Add(user);
             await _dbContext.SaveChangesAsync();
+
+            await _messageBus.SendUserCreatedAsync(user);
 
             return new RegisterResponse(user.UserName, user.Role);
         }

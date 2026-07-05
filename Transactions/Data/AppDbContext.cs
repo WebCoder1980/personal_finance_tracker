@@ -14,6 +14,7 @@ namespace Transactions.Data
         public DbSet<CategoryType> CategoryTypes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<UserReference> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
