@@ -24,7 +24,7 @@ namespace PersonalFinanceTracker.Transactions.Data
             return await _db.Categories
                 .Include(category => category.Type)
                 .FirstOrDefaultAsync(category => category.Id == id && category.UserId == userId)
-                ?? throw new InvalidOperationException($"Product with Id = {id} not found.");
+                ?? throw new InvalidOperationException($"Category with Id = {id} not found.");
         }
 
         public async Task<Category> CreateAsync(Category category, CancellationToken cancellationToken)

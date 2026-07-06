@@ -24,6 +24,7 @@ builder.AddNpgsqlDbContext<AppDbContext>("user-database");
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
 
 
 var app = builder.Build();

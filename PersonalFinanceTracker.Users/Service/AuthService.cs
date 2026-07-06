@@ -5,11 +5,11 @@ using PersonalFinanceTracker.Domain.Constants;
 using PersonalFinanceTracker.Domain.Dtos;
 using PersonalFinanceTracker.Domain.Models;
 using PersonalFinanceTracker.Users.Data;
+using PersonalFinanceTracker.Users.Exceptions;
 using PersonalFinanceTracker.Users.MessageBuses;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Users.Exceptions;
 
 namespace PersonalFinanceTracker.Users.Service
 {

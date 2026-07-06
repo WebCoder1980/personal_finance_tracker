@@ -1,6 +1,7 @@
 using PersonalFinanceTracker.Transactions.Data;
 using PersonalFinanceTracker.Transactions.Service;
 using PersonalFinanceTracker.Transactions.Service.Auth;
+using System.Runtime.ConstrainedExecution;
 using Users.MessageBuses;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +21,10 @@ builder.AddNpgsqlDbContext<AppDbContext>("transaction-database");
 
 builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<TransactionRepository>();
+
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 builder.Services.AddHostedService<RabbitMqMessageBus>();
 
