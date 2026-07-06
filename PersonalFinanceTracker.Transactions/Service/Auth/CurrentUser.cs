@@ -1,4 +1,4 @@
-﻿namespace Transactions.Service.Auth
+﻿namespace PersonalFinanceTracker.Transactions.Service.Auth
 {
     public class CurrentUser : ICurrentUser
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PersonalFinanceTracker.Domain.Models;
 
-namespace Transactions.Data
+namespace PersonalFinanceTracker.Transactions.Data
 {
     public class CategoryRepository
     {

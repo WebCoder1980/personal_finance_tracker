@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace Users.Service
+namespace PersonalFinanceTracker.Users.Service
 {
     public class AuthUtil
     {

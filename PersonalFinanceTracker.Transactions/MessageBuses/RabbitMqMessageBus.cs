@@ -1,10 +1,10 @@
 ﻿using PersonalFinanceTracker.Domain.Contracts;
 using PersonalFinanceTracker.Domain.Models;
+using PersonalFinanceTracker.Transactions.Data;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
-using Transactions.Data;
 using Transactions.MessageBuses;
 
 namespace Users.MessageBuses

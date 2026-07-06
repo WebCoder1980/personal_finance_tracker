@@ -9,7 +9,7 @@ using System.Text.Json;
 using System.Threading.Channels;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace Users.MessageBuses
+namespace PersonalFinanceTracker.Users.MessageBuses
 {
     public class RabbitMqMessageBus : IMessageBus
     {

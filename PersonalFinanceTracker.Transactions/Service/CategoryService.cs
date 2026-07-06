@@ -2,10 +2,10 @@
 using PersonalFinanceTracker.Domain.Dtos;
 using PersonalFinanceTracker.Domain.Models;
 using PersonalFinanceTracker.Domain.Converters;
-using Transactions.Data;
-using Transactions.Service.Auth;
+using PersonalFinanceTracker.Transactions.Service.Auth;
+using PersonalFinanceTracker.Transactions.Data;
 
-namespace Transactions.Service
+namespace PersonalFinanceTracker.Transactions.Service
 {
     public class CategoryService : ICategoryService
     {

@@ -1,4 +1,4 @@
-﻿namespace Users.Exceptions
+﻿namespace PersonalFinanceTracker.Users.Exceptions
 {
     public class AuthException : Exception
     {

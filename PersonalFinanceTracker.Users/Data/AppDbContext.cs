@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PersonalFinanceTracker.Domain.Constants;
 using PersonalFinanceTracker.Domain.Models;
-using Users.Service;
+using PersonalFinanceTracker.Users.Service;
 
-namespace Users.Data
+namespace PersonalFinanceTracker.Users.Data
 {
     public class AppDbContext : DbContext
     {

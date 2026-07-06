@@ -1,6 +1,6 @@
-using Transactions.Data;
-using Transactions.Service;
-using Transactions.Service.Auth;
+using PersonalFinanceTracker.Transactions.Data;
+using PersonalFinanceTracker.Transactions.Service;
+using PersonalFinanceTracker.Transactions.Service.Auth;
 using Users.MessageBuses;
 
 var builder = WebApplication.CreateBuilder(args);

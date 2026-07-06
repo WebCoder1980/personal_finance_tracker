@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalFinanceTracker.Domain.Dtos;
-using Users.Data;
-using Users.MessageBuses;
-using Users.Middleware;
-using Users.Service;
+using PersonalFinanceTracker.Users.Data;
+using PersonalFinanceTracker.Users.MessageBuses;
+using PersonalFinanceTracker.Users.Middleware;
+using PersonalFinanceTracker.Users.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

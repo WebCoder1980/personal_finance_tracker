@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using PersonalFinanceTracker.Domain.Dtos;
 using PersonalFinanceTracker.Domain.Models;
-using Transactions.Service;
+using PersonalFinanceTracker.Transactions.Service;
 
-namespace Transactions.Controllers;
+namespace PersonalFinanceTracker.Transactions.Controllers;
 
 [ApiController]
 [Route("[controller]")]

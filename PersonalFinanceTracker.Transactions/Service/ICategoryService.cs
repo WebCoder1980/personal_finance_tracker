@@ -2,7 +2,7 @@
 using PersonalFinanceTracker.Domain.Dtos;
 using PersonalFinanceTracker.Domain.Models;
 
-namespace Transactions.Service
+namespace PersonalFinanceTracker.Transactions.Service
 {
     public interface ICategoryService
     {

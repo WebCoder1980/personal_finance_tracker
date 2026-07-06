@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using PersonalFinanceTracker.Domain.Dtos;
-using Users.Service;
+using PersonalFinanceTracker.Users.Service;
 
-namespace Users.Controllers;
+namespace PersonalFinanceTracker.Users.Controllers;
 
 [ApiController]
 [Route("[controller]")]

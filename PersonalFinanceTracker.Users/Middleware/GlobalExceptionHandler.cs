@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using PersonalFinanceTracker.Domain.Dtos;
+using PersonalFinanceTracker.Users.Exceptions;
 using System.Net;
-using Users.Exceptions;
 
-namespace Users.Middleware
+namespace PersonalFinanceTracker.Users.Middleware
 {
     public sealed class GlobalExceptionHandler : IExceptionHandler
     {

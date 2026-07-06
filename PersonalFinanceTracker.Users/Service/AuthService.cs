@@ -4,14 +4,14 @@ using Microsoft.IdentityModel.Tokens;
 using PersonalFinanceTracker.Domain.Constants;
 using PersonalFinanceTracker.Domain.Dtos;
 using PersonalFinanceTracker.Domain.Models;
+using PersonalFinanceTracker.Users.Data;
+using PersonalFinanceTracker.Users.MessageBuses;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Users.Data;
 using Users.Exceptions;
-using Users.MessageBuses;
 
-namespace Users.Service
+namespace PersonalFinanceTracker.Users.Service
 {
     public class AuthService : IAuthService
     {

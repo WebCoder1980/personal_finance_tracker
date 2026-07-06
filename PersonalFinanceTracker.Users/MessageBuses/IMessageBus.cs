@@ -1,6 +1,6 @@
 ﻿using PersonalFinanceTracker.Domain.Models;
 
-namespace Users.MessageBuses
+namespace PersonalFinanceTracker.Users.MessageBuses
 {
     public interface IMessageBus
     {
