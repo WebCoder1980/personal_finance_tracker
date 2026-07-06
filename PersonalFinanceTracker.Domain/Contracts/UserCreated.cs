@@ -1,4 +1,4 @@
-﻿namespace Transactions.MessageBuses.Contracts;
+﻿namespace PersonalFinanceTracker.Domain.Contracts;
 
 public class UserCreated
 {

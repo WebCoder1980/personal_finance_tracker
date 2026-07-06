@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Transactions.Dtos
+namespace PersonalFinanceTracker.Domain.Dtos
 {
     public class CategoryUpsertRequest
     {

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Transactions.Dtos;
-using Transactions.Models;
+using PersonalFinanceTracker.Domain.Dtos;
+using PersonalFinanceTracker.Domain.Models;
 using Transactions.Service;
 
 namespace Transactions.Controllers;

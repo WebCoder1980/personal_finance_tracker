@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using PersonalFinanceTracker.Domain.Dtos;
 using System.Text;
 using Users.Data;
-using Users.Dtos;
 using Users.MessageBuses;
 using Users.Middleware;
 using Users.Service;

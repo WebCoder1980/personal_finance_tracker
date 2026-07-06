@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
-using System.ComponentModel.DataAnnotations;
+using PersonalFinanceTracker.Domain.Dtos;
 using System.Net;
-using System.Security.Authentication;
-using System.Text.Json;
-using Users.Dtos;
 using Users.Exceptions;
 
 namespace Users.Middleware

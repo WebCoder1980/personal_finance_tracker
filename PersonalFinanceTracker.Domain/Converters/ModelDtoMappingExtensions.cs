@@ -1,7 +1,7 @@
-﻿using Transactions.Dtos;
-using Transactions.Models;
+﻿using PersonalFinanceTracker.Domain.Dtos;
+using PersonalFinanceTracker.Domain.Models;
 
-namespace Transactions.Converters
+namespace PersonalFinanceTracker.Domain.Converters
 {
     public static class ModelDtoMappingExtensions
     {

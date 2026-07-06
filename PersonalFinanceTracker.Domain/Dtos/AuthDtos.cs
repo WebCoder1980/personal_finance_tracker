@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Users.Dtos
+namespace PersonalFinanceTracker.Domain.Dtos
 {
     public record LoginRequest([Length(5, 50)] string UserName, [Length(5, 50)] string Password);
     public record LoginResponse(string Token, string UserName, string Role);

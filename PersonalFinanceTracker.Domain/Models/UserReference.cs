@@ -1,4 +1,4 @@
-﻿namespace Transactions.Models
+﻿namespace PersonalFinanceTracker.Domain.Models
 {
     public class UserReference
     {

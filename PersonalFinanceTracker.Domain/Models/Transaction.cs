@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace Transactions.Models
+namespace PersonalFinanceTracker.Domain.Models
 {
     public class Transaction
     {

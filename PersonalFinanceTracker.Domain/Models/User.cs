@@ -1,6 +1,6 @@
-﻿using Users.Constants;
+﻿using PersonalFinanceTracker.Domain.Constants;
 
-namespace Users.Models
+namespace PersonalFinanceTracker.Domain.Models
 {
     public class User
     {

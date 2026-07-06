@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Transactions.Models;
+using PersonalFinanceTracker.Domain.Models;
 
 namespace Transactions.Data
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
-using Transactions.Dtos;
-using Transactions.Models;
+using PersonalFinanceTracker.Domain.Dtos;
+using PersonalFinanceTracker.Domain.Models;
 
 namespace Transactions.Service
 {

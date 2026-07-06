@@ -1,4 +1,4 @@
-﻿namespace Users.MessageBuses.Contracts
+﻿namespace PersonalFinanceTracker.Domain.Contracts
 {
     public class MessageBusEvent<T>
     {

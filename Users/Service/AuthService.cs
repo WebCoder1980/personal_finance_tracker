@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using PersonalFinanceTracker.Domain.Constants;
+using PersonalFinanceTracker.Domain.Dtos;
+using PersonalFinanceTracker.Domain.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Users.Constants;
 using Users.Data;
-using Users.Dtos;
 using Users.Exceptions;
 using Users.MessageBuses;
-using Users.Models;
 
 namespace Users.Service
 {
@@ -25,7 +25,7 @@ namespace Users.Service
             _dbContext = dbContext;
             _messageBus = messageBus;
         }
-        public async Task<LoginResponse?> Login(Dtos.LoginRequest request)
+        public async Task<LoginResponse?> Login(LoginRequest request)
         {
             User? user = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(user => user.UserName == request.UserName);
             if (user == null)

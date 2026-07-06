@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Users.Dtos;
+using PersonalFinanceTracker.Domain.Dtos;
 using Users.Service;
 
 namespace Users.Controllers;

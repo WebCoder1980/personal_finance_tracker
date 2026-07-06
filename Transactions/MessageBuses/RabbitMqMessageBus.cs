@@ -1,13 +1,11 @@
-﻿using RabbitMQ.Client;
+﻿using PersonalFinanceTracker.Domain.Contracts;
+using PersonalFinanceTracker.Domain.Models;
+using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Channels;
 using Transactions.Data;
 using Transactions.MessageBuses;
-using Transactions.MessageBuses.Contracts;
-using Transactions.Models;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Users.MessageBuses
 {

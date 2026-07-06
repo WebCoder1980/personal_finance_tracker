@@ -1,4 +1,4 @@
-﻿using Users.Models;
+﻿using PersonalFinanceTracker.Domain.Models;
 
 namespace Users.MessageBuses
 {

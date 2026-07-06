@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Users.Constants;
-using Users.Models;
+using PersonalFinanceTracker.Domain.Constants;
+using PersonalFinanceTracker.Domain.Models;
 using Users.Service;
 
 namespace Users.Data

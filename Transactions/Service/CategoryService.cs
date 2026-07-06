@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Claims;
-using System.Text.Json;
-using Transactions.Converters;
+using PersonalFinanceTracker.Domain.Dtos;
+using PersonalFinanceTracker.Domain.Models;
+using PersonalFinanceTracker.Domain.Converters;
 using Transactions.Data;
-using Transactions.Dtos;
-using Transactions.Models;
 using Transactions.Service.Auth;
 
 namespace Transactions.Service
