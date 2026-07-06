@@ -1,12 +1,21 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.ServiceDiscovery;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using System.Data;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace Microsoft.Extensions.Hosting;
 
@@ -123,5 +132,89 @@ public static class Extensions
         }
 
         return app;
+    }
+
+    public static TBuilder AddJwtBearerWithDefaults<TBuilder>(
+        this TBuilder builder,
+        IConfigurationSection jwtSection,
+        string serviceName)
+        where TBuilder : IHostApplicationBuilder
+    {
+        string jwtKey = jwtSection.GetValue<string>("Key") ?? string.Empty;
+        string? issuer = jwtSection.GetValue<string>("Issuer");
+        string? audience = jwtSection.GetValue<string>("Audience");
+        byte[] keyBytes = Encoding.UTF8.GetBytes(jwtKey);
+
+        builder.Services.AddAuthentication(authOptions =>
+        {
+            authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(jwtOptions =>
+        {
+            jwtOptions.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = issuer,
+                ValidAudience = audience,
+                IssuerSigningKey = new SymmetricSecurityKey(keyBytes)
+            };
+            jwtOptions.MapInboundClaims = false;
+        });
+
+        builder.Services.AddOpenApi(options =>
+        {
+            options.AddDocumentTransformer((document, context, cancellationToken) =>
+            {
+                document.Components ??= new OpenApiComponents();
+                document.Components.SecuritySchemes = new Dictionary<string, IOpenApiSecurityScheme>
+                {
+                    ["Bearer"] = new OpenApiSecurityScheme
+                    {
+                        Type = SecuritySchemeType.Http,
+                        Scheme = "bearer",
+                        BearerFormat = "JWT",
+                        Description = $"{serviceName} JWT Authorization header using the Bearer scheme."
+                    }
+                };
+
+                document.Security = new List<OpenApiSecurityRequirement>
+                {
+                    new OpenApiSecurityRequirement
+                    {
+                        [new OpenApiSecuritySchemeReference("Bearer", document)] = []
+                    }
+                };
+
+                return Task.CompletedTask;
+            });
+        });
+
+        return builder;
+    }
+
+    public static WebApplication EnsureDbContextCreated<TContext>(this WebApplication app)
+        where TContext : DbContext
+    {
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<TContext>();
+            db.Database.EnsureCreated();
+        }
+
+        return app;
+    }
+
+    public static IServiceCollection AddNpgsqlDbContext<TContext>(this IServiceCollection services, string connectionName)
+        where TContext : DbContext
+    {
+        services.AddDbContext<TContext>(options =>
+        {
+            options.UseNpgsql(connectionName);
+        });
+
+        return services;
     }
 }
