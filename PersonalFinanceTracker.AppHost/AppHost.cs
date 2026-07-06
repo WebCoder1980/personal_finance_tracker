@@ -1,6 +1,6 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.ApiGateway>("apigateway");
+builder.AddProject<Projects.PersonalFinanceTracker_ApiGateway>("apigateway");
 
 var userDatabase = builder.AddPostgres("user-postgres")
     .WithLifetime(ContainerLifetime.Persistent)
@@ -14,11 +14,11 @@ var rabbitMq = builder.AddRabbitMQ("rabbitmq")
     .WithLifetime(ContainerLifetime.Persistent)
     .WithManagementPlugin();
 
-builder.AddProject<Projects.Users>("users")
+builder.AddProject<Projects.PersonalFinanceTracker_Users>("users")
     .WithReference(userDatabase)
     .WithReference(rabbitMq);
 
-builder.AddProject<Projects.Transactions>("transactions")
+builder.AddProject<Projects.PersonalFinanceTracker_Transactions>("transactions")
     .WithReference(transactionDatabase)
     .WithReference(rabbitMq);
 

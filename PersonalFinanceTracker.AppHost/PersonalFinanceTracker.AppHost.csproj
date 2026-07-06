@@ -15,9 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApiGateway\ApiGateway.csproj" />
-    <ProjectReference Include="..\Transactions\Transactions.csproj" />
-    <ProjectReference Include="..\Users\Users.csproj" />
+    <ProjectReference Include="..\PersonalFinanceTracker.ApiGateway\PersonalFinanceTracker.ApiGateway.csproj" />
+    <ProjectReference Include="..\PersonalFinanceTracker.Transactions\PersonalFinanceTracker.Transactions.csproj" />
+    <ProjectReference Include="..\PersonalFinanceTracker.Users\PersonalFinanceTracker.Users.csproj" />
   </ItemGroup>
 
 </Project>
