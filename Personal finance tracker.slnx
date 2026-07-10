@@ -2,6 +2,7 @@
   <Project Path="PersonalFinanceTracker.ApiGateway/PersonalFinanceTracker.ApiGateway.csproj" />
   <Project Path="PersonalFinanceTracker.AppHost/PersonalFinanceTracker.AppHost.csproj" />
   <Project Path="PersonalFinanceTracker.Domain/PersonalFinanceTracker.Domain.csproj" Id="f3acf842-67b2-4cf3-b76c-a1da4ff701ba" />
+  <Project Path="PersonalFinanceTracker.Frontend/PersonalFinanceTracker.Frontend.csproj" />
   <Project Path="PersonalFinanceTracker.ServiceDefaults/PersonalFinanceTracker.ServiceDefaults.csproj" />
   <Project Path="PersonalFinanceTracker.Transactions/PersonalFinanceTracker.Transactions.csproj" />
   <Project Path="PersonalFinanceTracker.Users/PersonalFinanceTracker.Users.csproj" />
