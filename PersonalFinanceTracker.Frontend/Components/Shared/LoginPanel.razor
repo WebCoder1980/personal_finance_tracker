@@ -1,0 +1,44 @@
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+@inject JwtAuthenticationStateProvider AuthStateProvider
+
+@if (!string.IsNullOrEmpty(_success))
+{
+    <p style="color: green;">@_success</p>
+}
+
+@if (!string.IsNullOrEmpty(_error))
+{
+    <p style="color: crimson;">@_error</p>
+}
+
+<input type="text" @bind="_login"/>
+<input type="password" @bind="_password"/>
+<button @onclick="LoginAsync" disabled="@_busy">Войти (admin)</button>
+
+@code {
+    private bool _busy;
+    private string? _error;
+    private string? _success;
+    private string? _login;
+    private string? _password;
+
+    private async Task LoginAsync()
+    {
+        if (_login is null || _password is null)
+        {
+            return;
+        }
+
+        _busy = true;
+        _error = null;
+        _success = null;
+
+        var (success, error) = await AuthStateProvider.LoginAsync(_login, _password);
+        if (success)
+            _success = "Вход выполнен успешно. JWT сохранён в localStorage.";
+        else
+            _error = error;
+
+        _busy = false;
+    }
+}

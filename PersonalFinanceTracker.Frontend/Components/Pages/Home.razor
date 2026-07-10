@@ -1,7 +1,83 @@
 ﻿@page "/"
+@attribute [RequireAuth]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+@inject JwtAuthenticationStateProvider AuthStateProvider
 
-<PageTitle>Home</PageTitle>
+<PageTitle>JWT Auth Demo</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>JWT Auth Demo</h1>
 
-Welcome to your new app.
+<AuthorizeView>
+    <Authorized Context="authContext">
+        <div style="padding: .5rem 1rem; margin-bottom: 1rem;">
+            AuthorizeView · <strong>Authorized</strong> — @authContext.User.Identity?.Name
+        </div>
+        <p>Вы вошли как <strong>@authContext.User.Identity?.Name</strong>.</p>
+        <p>Роль: <strong>@authContext.User.FindFirst("role")?.Value</strong></p>
+        <button @onclick="LogoutAsync" disabled="@_busy">Выйти</button>
+    </Authorized>
+</AuthorizeView>
+
+<section style="margin-top: 1.5rem;">
+    <h2>JWT из localStorage</h2>
+    <button @onclick="LoadJwtAsync" disabled="@_busy">Прочитать и раскодировать</button>
+
+    @if (!string.IsNullOrEmpty(_error))
+    {
+        <p style="color: crimson;">@_error</p>
+    }
+
+    @if (!string.IsNullOrEmpty(_rawToken))
+    {
+        <h3>Token</h3>
+        <pre style="white-space: pre-wrap; word-break: break-all;">@_rawToken</pre>
+
+        <h3>Payload (без проверки подписи)</h3>
+        <pre>@_decodedPayload</pre>
+    }
+</section>
+
+@code {
+    private bool _busy;
+    private string? _error;
+    private string? _rawToken;
+    private string? _decodedPayload;
+
+    private async Task LogoutAsync()
+    {
+        _busy = true;
+        _error = null;
+        _rawToken = null;
+        _decodedPayload = null;
+
+        await AuthStateProvider.LogoutAsync();
+        _busy = false;
+    }
+
+    private async Task LoadJwtAsync()
+    {
+        _busy = true;
+        _error = null;
+        _rawToken = null;
+        _decodedPayload = null;
+
+        try
+        {
+            _rawToken = await AuthStateProvider.GetStoredTokenAsync();
+            if (string.IsNullOrWhiteSpace(_rawToken))
+            {
+                _error = "В localStorage нет JWT (ключ «jwt»).";
+            }
+            else
+            {
+                _decodedPayload = JwtPayloadDecoder.DecodePayloadJson(_rawToken);
+            }
+        }
+        catch (Exception ex)
+        {
+            _error = ex.Message;
+        }
+
+        _busy = false;
+    }
+}

@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Components.Authorization;
+using PersonalFinanceTracker.Frontend.Auth;
 using PersonalFinanceTracker.Frontend.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,15 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddAuthorizationCore();
+builder.Services.AddCascadingAuthenticationState();
+builder.Services.AddHttpClient("AuthApi", client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5011/");
+});
+builder.Services.AddScoped<JwtAuthenticationStateProvider>();
+builder.Services.AddScoped<AuthenticationStateProvider>(sp =>
+    sp.GetRequiredService<JwtAuthenticationStateProvider>());
 
 var app = builder.Build();
 
