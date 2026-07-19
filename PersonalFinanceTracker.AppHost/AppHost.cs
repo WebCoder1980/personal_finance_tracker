@@ -22,7 +22,5 @@ builder.AddProject<Projects.PersonalFinanceTracker_Transactions>("transactions")
     .WithReference(transactionDatabase)
     .WithReference(rabbitMq);
 
-builder.AddProject<Projects.PersonalFinanceTracker_Frontend>("personalfinancetracker-frontend");
-
 builder.Build()
     .Run();
