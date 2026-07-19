@@ -3,5 +3,7 @@
 </script>
 
 <template>
-
+<div class="p-20">
+  Привет
+</div>
 </template>
