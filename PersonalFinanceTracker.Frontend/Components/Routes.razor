@@ -1,7 +1,0 @@
-﻿@rendermode @(new InteractiveServerRenderMode(prerender: false))
-<Router AppAssembly="typeof(Program).Assembly" NotFoundPage="typeof(Pages.NotFound)">
-    <Found Context="routeData">
-        <JwtAuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
-        <FocusOnNavigate RouteData="routeData" Selector="h1" />
-    </Found>
-</Router>
