@@ -1,27 +1,31 @@
 import {type AuthData, useAuthStore} from "@/service/AuthStore.ts";
 
-export function login() {
-    fetch("/api/auth/login", {
+export async function login(login : string, password : string) {
+    const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({username: 'admin', password: 'admin_password'})
+        body: JSON.stringify({username: login, password: password})
     })
-    .then(response => response.json())
-    .then(json =>
-    {
-        const data = json as AuthData
-        const authStore = useAuthStore()
+    const data = await response.json() as AuthData
+    if (!response.ok) {
+        throw new Error(`Ошибка при попытке входа. Статус: ${response.status}. Тело ответа: ${JSON.stringify(data)}`)
+    }
+    const authStore = useAuthStore()
+    authStore.data = data
+}
 
-        authStore.data = data
-        console.log(authStore.data)
+export async function register(login : string, password : string) {
+    const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username: login, password: password})
     })
-    .catch(error => {
-        if (error.name === 'AbortError') {
-            console.log('Запрос был отменен');
-        } else {
-            console.error('Ошибка:', error);
-        }
-    })
+    const data = await response.json()
+    if (!response.ok) {
+        throw new Error(`Ошибка при попытке регистрации. Статус: ${response.status}. Тело ответа: ${JSON.stringify(data)}`)
+    }
 }
