@@ -7,6 +7,7 @@ import {useRouter} from "vue-router";
 import {Input} from "@/components/ui/input";
 import {ref} from "vue";
 import {Alert, AlertTitle, AlertDescription} from "@/components/ui/alert";
+import TextField from "@/components/molecules/TextField.vue";
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -33,14 +34,8 @@ async function loginButtonClicked() {
 <template>
   <div class="flex items-center justify-center min-h-screen flex-col gap-3 px-[40%]">
     <div>Вы не авторизованы...</div>
-    <div class="flex flex-col w-full">
-      <span>Логин: </span>
-      <Input v-model="curLogin"></Input>
-    </div>
-    <div class="flex flex-col w-full">
-      <span>Пароль: </span>
-      <Input type="password" v-model="curPassword"></Input>
-    </div>
+    <TextField title="Логин" v-model="curLogin"></TextField>
+    <TextField type="password" title="Пароль" v-model="curPassword"></TextField>
     <Button @click="async () => await loginButtonClicked()">Авторизация</Button>
     <Alert variant="destructive" v-if="errorVisibility">
       <AlertTitle>Ошибка при входе!</AlertTitle>

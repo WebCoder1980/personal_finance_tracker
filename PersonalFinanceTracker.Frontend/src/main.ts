@@ -4,10 +4,10 @@ import App from './App.vue'
 import {createPinia} from "pinia";
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import {createRouter, createWebHistory} from "vue-router";
-import TransactionsPage from "@/components/TransactionsPage.vue";
-import LoginPage from "@/components/LoginPage.vue";
-import DefaultPage from "@/components/DefaultPage.vue";
-import RegisterPage from "@/components/RegisterPage.vue";
+import TransactionsPage from "@/pages/TransactionsPage.vue";
+import LoginPage from "@/pages/LoginPage.vue";
+import DefaultPage from "@/pages/DefaultPage.vue";
+import RegisterPage from "@/pages/RegisterPage.vue";
 
 const app = createApp(App)
 const pinia = createPinia()

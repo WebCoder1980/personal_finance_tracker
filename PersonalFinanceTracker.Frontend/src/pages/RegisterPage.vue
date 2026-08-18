@@ -6,6 +6,7 @@ import {useRouter} from "vue-router";
 import {Button} from "@/components/ui/button";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
 import {Input} from "@/components/ui/input";
+import TextField from "@/components/molecules/TextField.vue";
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -38,17 +39,9 @@ async function registerButtonClicked() {
 <template>
   <div class="flex items-center justify-center min-h-screen flex-col gap-3 px-[40%]">
     <div>Зарегистрироваться</div>
-    <div class="flex flex-col w-full">
-      <span>Логин: </span>
-      <Input v-model="curLogin"></Input>
-    </div>
-    <div class="flex flex-col w-full">
-      <span>Пароль: </span>
-      <Input type="password" v-model="curPassword"></Input></div>
-    <div class="flex flex-col w-full">
-      <span>Повторите пароль: </span>
-      <Input type="password" v-model="curPassword2"></Input>
-    </div>
+    <TextField title="Логин" v-model="curLogin"></TextField>
+    <TextField type="password" title="Пароль" v-model="curPassword"></TextField>
+    <TextField type="password" title="Повторите пароль" v-model="curPassword2"></TextField>
     <Button @click="async () => await registerButtonClicked()">Регистрация</Button>
     <Alert variant="destructive" v-if="curError != ''">
       <AlertTitle>Ошибка при входе!</AlertTitle>
