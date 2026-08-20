@@ -9,19 +9,19 @@ export interface AuthData {
 
 type AuthStore = {
     data: AuthData | null,
-    setData: (newData : AuthData) => void
+    setData: (newData : AuthData | null) => void
 }
 
 export const useAuthStore = create<AuthStore>()(
     persist(
         (set) => ({
             data: null,
-            setData: (newData : AuthData) => {
+            setData: (newData : AuthData | null) => {
                 set({data: newData})
             }
         }),
         {
-            name: 'bear-storage'
+            name: 'auth-storage'
         }
     )
 )

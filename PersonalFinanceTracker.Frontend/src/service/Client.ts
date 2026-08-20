@@ -1,4 +1,4 @@
-import {type AuthData, useAuthStore} from "@/service/AuthStore.ts";
+import {type AuthData} from "@/service/AuthStore.ts";
 
 export async function login(login : string, password : string) {
     const response = await fetch("/api/auth/login", {
@@ -8,12 +8,11 @@ export async function login(login : string, password : string) {
         },
         body: JSON.stringify({username: login, password: password})
     })
-    const newData = await response.json() as AuthData
+    const data = await response.json() as AuthData
     if (!response.ok) {
-        throw new Error(`Ошибка при попытке входа. Статус: ${response.status}. Тело ответа: ${JSON.stringify(newData)}`)
+        throw new Error(`Ошибка при попытке входа. Статус: ${response.status}. Тело ответа: ${JSON.stringify(data)}`)
     }
-    const {setData} = useAuthStore()
-    setData(newData)
+    return data;
 }
 
 export async function register(login : string, password : string) {
