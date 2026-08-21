@@ -16,8 +16,9 @@ using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
-namespace Microsoft.Extensions.Hosting;
+namespace PersonalFinanceTracker.ServiceDefaults;
 
 // Adds common Aspire services: service discovery, resilience, health checks, and OpenTelemetry.
 // This project should be referenced by each service project in your solution.

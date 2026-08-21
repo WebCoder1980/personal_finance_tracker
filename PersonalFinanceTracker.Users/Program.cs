@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalFinanceTracker.Domain.Dtos;
+using PersonalFinanceTracker.ServiceDefaults;
 using PersonalFinanceTracker.Users.Data;
 using PersonalFinanceTracker.Users.MessageBuses;
 using PersonalFinanceTracker.Users.Middleware;

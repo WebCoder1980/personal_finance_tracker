@@ -5,9 +5,8 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
-using Transactions.MessageBuses;
 
-namespace Users.MessageBuses
+namespace PersonalFinanceTracker.Transactions.MessageBuses
 {
     public class RabbitMqMessageBus : BackgroundService, IMessageBus
     {

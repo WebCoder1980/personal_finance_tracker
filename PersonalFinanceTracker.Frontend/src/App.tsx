@@ -3,6 +3,7 @@ import {Button} from "@/components/ui/button.tsx";
 import {create} from "zustand/react";
 import {persist} from "zustand/middleware";
 import {useAuthStore} from "@/service/AuthStore.ts";
+import {Card, CardContent, CardFooter} from "@/components/ui/card.tsx";
 
 type BearStore = {
     bears: number,
@@ -31,13 +32,18 @@ function App() {
 
     return (
     <>
-      <div className="flex flex-col h-50 justify-center items-center text-3xl my-3 mx-[40%] bg-yellow-300">
-          <div>Привет, мир</div>
-          <Button onClick={increasePopulation}>Клик</Button>
-          {bears}
-          <Button onClick={() => setData(null)}>Выход</Button>
-      </div>
-
+        <div className="flex min-h-screen justify-center items-center">
+          <Card className="w-full max-w-sm">
+              <CardContent className="flex flex-col">
+                  Привет, мир
+                  <Button onClick={increasePopulation}>Клик</Button>
+                  Counter: {bears}
+              </CardContent>
+              <CardFooter>
+                  <Button variant="outline" onClick={() => setData(null)} className="w-full">Выход</Button>
+              </CardFooter>
+          </Card>
+        </div>
     </>
   )
 }

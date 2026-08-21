@@ -7,6 +7,8 @@ import {Button} from "@/components/ui/button.tsx";
 import {register} from "@/service/Client.ts";
 import {useState} from "react";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";
+import {Card, CardContent} from "@/components/ui/card.tsx";
+import {useNavigate} from "react-router";
 
 export const formSchema = z.object({
     login: z
@@ -28,10 +30,12 @@ export const formSchema = z.object({
 
 export function RegisterPage() {
     const [isErrorVisible, setIsErrorVisible] = useState<boolean>(false)
+    const navigate = useNavigate()
 
     async function onSubmit(data : z.infer<typeof formSchema>) {
         try {
             await register(data.login, data.password)
+            navigate("/login")
         }
         catch (error) {
             console.log(error)
@@ -49,64 +53,68 @@ export function RegisterPage() {
     })
 
     return <>
-        <div className="flex flex-col mx-[40%] mt-10">
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-                <FieldGroup>
-                    <Controller
-                        name="login"
-                        control={form.control}
-                        render={({ field, fieldState }) => (
-                            <Field data-invalid={fieldState.invalid}>
-                                <FieldLabel>Логин</FieldLabel>
-                                <Input value={field.value} onChange={field.onChange} aria-invalid={fieldState.invalid}></Input>
-                                {fieldState.invalid && (
-                                    <FieldError errors={[fieldState.error]} />
-                                )}
-                            </Field>
-                        )}
-                    />
-                    <Controller
-                        name="password"
-                        control={form.control}
-                        render={({ field, fieldState }) => (
-                            <Field data-invalid={fieldState.invalid}>
-                                <FieldLabel>Пароль</FieldLabel>
-                                <Input type="password" value={field.value} onChange={field.onChange} aria-invalid={fieldState.invalid}></Input>
-                                {fieldState.invalid && (
-                                    <FieldError errors={[fieldState.error]} />
-                                )}
-                            </Field>
-                        )}
-                    />
-                    <Controller
-                        name="passwordRepeat"
-                        control={form.control}
-                        render={({ field, fieldState }) => (
-                            <Field data-invalid={fieldState.invalid}>
-                                <FieldLabel>Повторение пароля</FieldLabel>
-                                <Input type="password" value={field.value} onChange={field.onChange} aria-invalid={fieldState.invalid}></Input>
-                                {fieldState.invalid && (
-                                    <FieldError errors={[fieldState.error]} />
-                                )}
-                            </Field>
-                        )}
-                    />
-                    <Field>
-                        <Button type="submit">
-                            Зарегистрироваться
-                        </Button>
-                    </Field>
-                    {isErrorVisible && <Alert variant="destructive">
-                        <AlertTitle>Ошибка при регистрации!</AlertTitle>
-                        <AlertDescription>
-                            Регистрация не удалась, попробуйте позже
-                        </AlertDescription>
-                    </Alert>}
-                </FieldGroup>
-            </form>
-            <Button variant="link">
-                <a href="/login">Аккаунт уже существует?</a>
-            </Button>
+        <div className="flex min-h-screen justify-center items-center">
+            <Card className="w-full max-w-sm">
+                <CardContent>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
+                    <FieldGroup>
+                        <Controller
+                            name="login"
+                            control={form.control}
+                            render={({ field, fieldState }) => (
+                                <Field data-invalid={fieldState.invalid}>
+                                    <FieldLabel>Логин</FieldLabel>
+                                    <Input value={field.value} onChange={field.onChange} aria-invalid={fieldState.invalid}></Input>
+                                    {fieldState.invalid && (
+                                        <FieldError errors={[fieldState.error]} />
+                                    )}
+                                </Field>
+                            )}
+                        />
+                        <Controller
+                            name="password"
+                            control={form.control}
+                            render={({ field, fieldState }) => (
+                                <Field data-invalid={fieldState.invalid}>
+                                    <FieldLabel>Пароль</FieldLabel>
+                                    <Input type="password" value={field.value} onChange={field.onChange} aria-invalid={fieldState.invalid}></Input>
+                                    {fieldState.invalid && (
+                                        <FieldError errors={[fieldState.error]} />
+                                    )}
+                                </Field>
+                            )}
+                        />
+                        <Controller
+                            name="passwordRepeat"
+                            control={form.control}
+                            render={({ field, fieldState }) => (
+                                <Field data-invalid={fieldState.invalid}>
+                                    <FieldLabel>Повторение пароля</FieldLabel>
+                                    <Input type="password" value={field.value} onChange={field.onChange} aria-invalid={fieldState.invalid}></Input>
+                                    {fieldState.invalid && (
+                                        <FieldError errors={[fieldState.error]} />
+                                    )}
+                                </Field>
+                            )}
+                        />
+                        <Field>
+                            <Button type="submit">
+                                Зарегистрироваться
+                            </Button>
+                        </Field>
+                        {isErrorVisible && <Alert variant="destructive">
+                            <AlertTitle>Ошибка при регистрации!</AlertTitle>
+                            <AlertDescription>
+                                Регистрация не удалась, попробуйте позже
+                            </AlertDescription>
+                        </Alert>}
+                    </FieldGroup>
+                </form>
+                </CardContent>
+                <Button variant="link">
+                    <a href="/login">Аккаунт уже существует?</a>
+                </Button>
+            </Card>
         </div>
     </>
 }

@@ -1,6 +1,6 @@
 ﻿using RabbitMQ.Client.Events;
 
-namespace Transactions.MessageBuses
+namespace PersonalFinanceTracker.Transactions.MessageBuses
 {
     public interface IMessageBus
     {

@@ -8,6 +8,7 @@ import {login} from "@/service/Client.ts";
 import {useState} from "react";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";
 import {useAuthStore} from "@/service/AuthStore.ts";
+import {Card, CardContent, CardFooter} from "@/components/ui/card.tsx";
 
 export const formSchema = z.object({
     login: z
@@ -44,51 +45,57 @@ export function LoginPage() {
     })
 
     return <>
-        <div className="flex flex-col mx-[40%] mt-10">
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-                <FieldGroup>
-                    <Controller
-                        name="login"
-                        control={form.control}
-                        render={({ field, fieldState }) => (
+        <div className="flex min-h-screen justify-center items-center">
+            <Card className="w-full max-w-sm">
+                <CardContent>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
+                    <FieldGroup>
+                        <Controller
+                            name="login"
+                            control={form.control}
+                            render={({ field, fieldState }) => (
+                                    <Field data-invalid={fieldState.invalid}>
+                                        <FieldLabel>Логин</FieldLabel>
+                                        <Input value={field.value} onChange={field.onChange} aria-invalid={fieldState.invalid}></Input>
+                                        {fieldState.invalid && (
+                                            <FieldError errors={[fieldState.error]} />
+                                        )}
+                                    </Field>
+                                )}
+                            />
+                        <Controller
+                            name="password"
+                            control={form.control}
+                            render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel>Логин</FieldLabel>
-                                    <Input value={field.value} onChange={field.onChange} aria-invalid={fieldState.invalid}></Input>
+                                    <FieldLabel>Пароль</FieldLabel>
+                                    <Input type="password" value={field.value} onChange={field.onChange} aria-invalid={fieldState.invalid}></Input>
                                     {fieldState.invalid && (
                                         <FieldError errors={[fieldState.error]} />
                                     )}
                                 </Field>
                             )}
                         />
-                    <Controller
-                        name="password"
-                        control={form.control}
-                        render={({ field, fieldState }) => (
-                            <Field data-invalid={fieldState.invalid}>
-                                <FieldLabel>Пароль</FieldLabel>
-                                <Input type="password" value={field.value} onChange={field.onChange} aria-invalid={fieldState.invalid}></Input>
-                                {fieldState.invalid && (
-                                    <FieldError errors={[fieldState.error]} />
-                                )}
-                            </Field>
-                        )}
-                    />
-                    <Field>
-                        <Button type="submit">
-                            Ввойти
-                        </Button>
-                    </Field>
-                    {isErrorVisible && <Alert variant="destructive">
-                        <AlertTitle>Ошибка при входе!</AlertTitle>
-                        <AlertDescription>
-                            Проверьте правильность логина или пароля.
-                        </AlertDescription>
-                    </Alert>}
-                </FieldGroup>
-            </form>
-            <Button variant="link">
-                <a href="/register">Ещё нет аккаунта?</a>
-            </Button>
+                        <Field>
+                            <Button type="submit">
+                                Ввойти
+                            </Button>
+                        </Field>
+                        {isErrorVisible && <Alert variant="destructive">
+                            <AlertTitle>Ошибка при входе!</AlertTitle>
+                            <AlertDescription>
+                                Проверьте правильность логина или пароля.
+                            </AlertDescription>
+                        </Alert>}
+                    </FieldGroup>
+                </form>
+                </CardContent>
+                <CardFooter className="flex flex-col">
+                    <Button variant="link">
+                        <a href="/register">Ещё нет аккаунта?</a>
+                    </Button>
+                </CardFooter>
+            </Card>
         </div>
     </>
 }

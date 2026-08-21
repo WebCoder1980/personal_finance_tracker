@@ -1,8 +1,9 @@
+using PersonalFinanceTracker.ServiceDefaults;
 using PersonalFinanceTracker.Transactions.Data;
+using PersonalFinanceTracker.Transactions.MessageBuses;
 using PersonalFinanceTracker.Transactions.Service;
 using PersonalFinanceTracker.Transactions.Service.Auth;
 using System.Runtime.ConstrainedExecution;
-using Users.MessageBuses;
 
 var builder = WebApplication.CreateBuilder(args);
 
