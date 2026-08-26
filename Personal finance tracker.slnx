@@ -1,9 +1,9 @@
 <Solution>
   <Folder Name="/Users/">
-    <Project Path="PersonalFinanceTracker.Users.Application/PersonalFinanceTracker.Users.Application.csproj" />
-    <Project Path="PersonalFinanceTracker.Users.Domain.Tests/PersonalFinanceTracker.Users.Domain.Tests.csproj" />
-    <Project Path="PersonalFinanceTracker.Users.Domain/PersonalFinanceTracker.Users.Domain.csproj" />
-    <Project Path="PersonalFinanceTracker.Users.Infrastructure/PersonalFinanceTracker.Users.Infrastructure.csproj" />
+    <Project Path="Users/PersonalFinanceTracker.Users.Application/PersonalFinanceTracker.Users.Application.csproj" />
+    <Project Path="Users/PersonalFinanceTracker.Users.Domain.Tests/PersonalFinanceTracker.Users.Domain.Tests.csproj" />
+    <Project Path="Users/PersonalFinanceTracker.Users.Domain/PersonalFinanceTracker.Users.Domain.csproj" />
+    <Project Path="Users/PersonalFinanceTracker.Users.Infrastructure/PersonalFinanceTracker.Users.Infrastructure.csproj" />
   </Folder>
   <Project Path="PersonalFinanceTracker.ApiGateway/PersonalFinanceTracker.ApiGateway.csproj" />
   <Project Path="PersonalFinanceTracker.AppHost/PersonalFinanceTracker.AppHost.csproj" />

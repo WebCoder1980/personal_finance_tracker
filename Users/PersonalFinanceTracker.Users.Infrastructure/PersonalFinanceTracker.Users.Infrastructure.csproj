@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PersonalFinanceTracker.ServiceDefaults\PersonalFinanceTracker.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\..\PersonalFinanceTracker.ServiceDefaults\PersonalFinanceTracker.ServiceDefaults.csproj" />
     <ProjectReference Include="..\PersonalFinanceTracker.Users.Application\PersonalFinanceTracker.Users.Application.csproj" />
   </ItemGroup>
 
