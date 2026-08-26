@@ -1,8 +1,10 @@
 <Solution>
+  <Folder Name="/Users/">
+    <Project Path="PersonalFinanceTracker.Users.Application/PersonalFinanceTracker.Users.Application.csproj" />
+    <Project Path="PersonalFinanceTracker.Users.Domain/PersonalFinanceTracker.Users.Domain.csproj" />
+    <Project Path="PersonalFinanceTracker.Users.Infrastructure/PersonalFinanceTracker.Users.Infrastructure.csproj" />
+  </Folder>
   <Project Path="PersonalFinanceTracker.ApiGateway/PersonalFinanceTracker.ApiGateway.csproj" />
   <Project Path="PersonalFinanceTracker.AppHost/PersonalFinanceTracker.AppHost.csproj" />
   <Project Path="PersonalFinanceTracker.ServiceDefaults/PersonalFinanceTracker.ServiceDefaults.csproj" />
-  <Project Path="PersonalFinanceTracker.Users.Application/PersonalFinanceTracker.Users.Application.csproj" />
-  <Project Path="PersonalFinanceTracker.Users.Domain/PersonalFinanceTracker.Users.Domain.csproj" />
-  <Project Path="PersonalFinanceTracker.Users.Infrastructure/PersonalFinanceTracker.Users.Infrastructure.csproj" />
 </Solution>
