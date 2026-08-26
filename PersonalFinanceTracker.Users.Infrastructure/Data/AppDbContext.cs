@@ -2,6 +2,7 @@
 using PersonalFinanceTracker.Users.Application.Ports.Out;
 using PersonalFinanceTracker.Users.Domain.Constants;
 using PersonalFinanceTracker.Users.Domain.Models;
+using PersonalFinanceTracker.Users.Infrastructure.Utils;
 
 namespace PersonalFinanceTracker.Users.Infrastructure.Data
 {
@@ -9,6 +10,7 @@ namespace PersonalFinanceTracker.Users.Infrastructure.Data
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
+
         }
         public DbSet<User> Users { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

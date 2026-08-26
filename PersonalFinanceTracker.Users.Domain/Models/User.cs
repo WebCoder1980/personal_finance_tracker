@@ -17,7 +17,7 @@ namespace PersonalFinanceTracker.Users.Domain.Models
         {
         }
 
-        public static User Register(string userName, string passwordHash, string role = AppRoles.USER)
+        public static User Register(string userName, string passwordHash, string role)
         {
             User user = new User();
 

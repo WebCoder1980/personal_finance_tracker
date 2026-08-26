@@ -1,4 +1,8 @@
-﻿namespace PersonalFinanceTracker.Users.Infrastructure.Dtos
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PersonalFinanceTracker.Users.Infrastructure.Dtos
 {
     public class JwtOptions
     {

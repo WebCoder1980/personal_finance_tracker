@@ -7,7 +7,8 @@ var userDatabase = builder.AddPostgres("user-postgres")
     .AddDatabase("user-database");
 
 builder.AddProject<Projects.PersonalFinanceTracker_Users_Infrastructure>("users")
-    .WithReference(userDatabase);
+    .WithReference(userDatabase)
+    .WaitFor(userDatabase);
 
 builder.Build()
     .Run();

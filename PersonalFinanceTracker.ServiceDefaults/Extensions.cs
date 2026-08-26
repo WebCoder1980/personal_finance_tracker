@@ -196,7 +196,7 @@ public static class Extensions
         return builder;
     }
 
-    public static WebApplication EnsureDbContextCreated<TContext>(this WebApplication app)
+    public static WebApplication CreateDbContextCreated<TContext>(this WebApplication app)
         where TContext : DbContext
     {
         using (var scope = app.Services.CreateScope())

@@ -17,21 +17,26 @@ builder.AddServiceDefaults();
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-builder.AddRabbitMQClient("rabbitmq");
 builder.AddJwtBearerWithDefaults(builder.Configuration.GetSection("Jwt"), "Users");
 
 builder.AddNpgsqlDbContext<AppDbContext>("user-database");
 
 builder.Services.AddScoped<IUserRegisterHandler, UserRegisterHandler>();
+builder.Services.AddScoped<IUserLoginHandler, UserLoginHandler>();
+
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
+
+builder.Services.AddHostedService<DataInitializer>();
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
 
 var app = builder.Build();
-app.EnsureDbContextCreated<AppDbContext>();
+app.CreateDbContextCreated<AppDbContext>();
 
 app.MapDefaultEndpoints();
 

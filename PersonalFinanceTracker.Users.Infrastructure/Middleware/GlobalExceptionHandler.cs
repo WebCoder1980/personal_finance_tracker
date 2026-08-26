@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using PersonalFinanceTracker.Users.Application.Exceptions;
+using PersonalFinanceTracker.Users.Domain.Exceptions;
 using PersonalFinanceTracker.Users.Infrastructure.Dtos;
 using System.Net;
 
@@ -7,6 +8,13 @@ namespace PersonalFinanceTracker.Users.Infrastructure.Middleware
 {
     public sealed class GlobalExceptionHandler : IExceptionHandler
     {
+        private readonly ILogger<GlobalExceptionHandler> _logger;
+
+        public GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
+        {
+            _logger = logger;
+        }
+
         public async ValueTask<bool> TryHandleAsync(
             HttpContext context,
             Exception exception,
@@ -25,16 +33,19 @@ namespace PersonalFinanceTracker.Users.Infrastructure.Middleware
                 InvalidDataException ex => (
                     (int)HttpStatusCode.BadRequest,
                     ex.Message),
+                DomainException ex => (
+                (int)HttpStatusCode.BadRequest,
+                "Invalid data error"),
                 _ => (
-                        (int)HttpStatusCode.InternalServerError,
-                        "Internal server error")
+                    (int)HttpStatusCode.InternalServerError,
+                    "Internal server error")
                 };
 
             context.Response.StatusCode = statusCode;
 
             var response = new ErrorDto(message);
 
-            Console.WriteLine(exception);
+            _logger.LogWarning(exception.ToString());
 
             await context.Response.WriteAsJsonAsync(
                 response,
