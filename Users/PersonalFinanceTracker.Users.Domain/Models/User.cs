@@ -37,6 +37,10 @@ namespace PersonalFinanceTracker.Users.Domain.Models
             }
             user.PasswordHash = passwordHash;
 
+            if (!AppRoles.IsValid(role))
+            {
+                throw new DomainException("Role is invalid");
+            }
             user.Role = role;
 
             return user;
