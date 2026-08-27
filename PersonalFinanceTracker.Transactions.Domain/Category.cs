@@ -55,5 +55,14 @@ namespace PersonalFinanceTracker.Transactions.Domain
 
             MonthlyAmount = newValue;
         }
+
+        public bool HasAccess(Guid userId)
+        {
+            if (UserId == userId)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
