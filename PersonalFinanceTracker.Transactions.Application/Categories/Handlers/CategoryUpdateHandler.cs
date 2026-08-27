@@ -5,6 +5,7 @@ using PersonalFinanceTracker.Transactions.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
 {
@@ -19,22 +20,22 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
             _categoryRepository = categoryRepository;
         }
 
-        public async Task<CategoryUpdateResult> ExecuteAsync(CategoryUpdateCommand command, CancellationToken token)
+        public async Task<Category> ExecuteAsync(Guid id, Guid userId, string name, double? monthlyAmount, CancellationToken token)
         {
-            Category category = await _categoryRepository.GetByIdAsync(command.Id, token)
+            Category category = await _categoryRepository.GetByIdAsync(id, token)
                 ?? throw new DomainException("Category was not found");
 
-            if (!category.HasAccess(command.UserId))
+            if (!category.HasAccess(userId))
             {
                 throw new PermissionDeniedException();
             }
 
-            category.ChangeName(command.Name);
-            category.ChangeMonthlyAmount(command.MonthlyAmount);
+            category.ChangeName(name);
+            category.ChangeMonthlyAmount(monthlyAmount);
 
             await _unitOfWork.SaveChangesAsync(token);
 
-            return new CategoryUpdateResult(category.Id, category.UserId, category.Name, category.Type, category.MonthlyAmount);
+            return category;
         }
     }
 }
