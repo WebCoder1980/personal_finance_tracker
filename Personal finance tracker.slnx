@@ -1,4 +1,10 @@
 <Solution>
+  <Folder Name="/Transactions/">
+    <Project Path="PersonalFinanceTracker.Transactions.Application/PersonalFinanceTracker.Transactions.Application.csproj" />
+    <Project Path="PersonalFinanceTracker.Transactions.Domain.Tests/PersonalFinanceTracker.Transactions.Domain.Tests.csproj" Id="b4b448ea-353b-4687-aa9a-edd668ce7faf" />
+    <Project Path="PersonalFinanceTracker.Transactions.Domain/PersonalFinanceTracker.Transactions.Domain.csproj" />
+    <Project Path="PersonalFinanceTracker.Transactions.Infrastructure/PersonalFinanceTracker.Transactions.Infrastructure.csproj" />
+  </Folder>
   <Folder Name="/Users/">
     <Project Path="Users/PersonalFinanceTracker.Users.Application/PersonalFinanceTracker.Users.Application.csproj" />
     <Project Path="Users/PersonalFinanceTracker.Users.Domain.Tests/PersonalFinanceTracker.Users.Domain.Tests.csproj" />

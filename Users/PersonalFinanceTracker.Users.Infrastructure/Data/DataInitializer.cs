@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration.UserSecrets;
 using Microsoft.OpenApi;
+using PersonalFinanceTracker.ServiceDefaults.Constants;
 using PersonalFinanceTracker.Users.Application.Handlers;
 using PersonalFinanceTracker.Users.Application.Ports.In;
 using PersonalFinanceTracker.Users.Application.Ports.Out;
-using PersonalFinanceTracker.Users.Domain.Constants;
 using PersonalFinanceTracker.Users.Domain.Models;
 using System.Runtime.CompilerServices;
 

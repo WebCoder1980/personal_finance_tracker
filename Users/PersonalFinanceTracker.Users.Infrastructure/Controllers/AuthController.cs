@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using PersonalFinanceTracker.ServiceDefaults.Constants;
 using PersonalFinanceTracker.Users.Application.Handlers;
 using PersonalFinanceTracker.Users.Application.Ports.In;
-using PersonalFinanceTracker.Users.Domain.Constants;
 using PersonalFinanceTracker.Users.Infrastructure.Dtos;
 
 namespace PersonalFinanceTracker.Users.Infrastructure.Controllers;

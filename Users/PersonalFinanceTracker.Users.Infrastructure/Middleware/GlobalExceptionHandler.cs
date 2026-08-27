@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
+using PersonalFinanceTracker.ServiceDefaults.Exceptions;
 using PersonalFinanceTracker.Users.Application.Exceptions;
-using PersonalFinanceTracker.Users.Domain.Exceptions;
 using PersonalFinanceTracker.Users.Infrastructure.Dtos;
 using System.Net;
 

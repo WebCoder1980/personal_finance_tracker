@@ -1,5 +1,5 @@
-using PersonalFinanceTracker.Users.Domain.Constants;
-using PersonalFinanceTracker.Users.Domain.Exceptions;
+using PersonalFinanceTracker.ServiceDefaults.Constants;
+using PersonalFinanceTracker.ServiceDefaults.Exceptions;
 using PersonalFinanceTracker.Users.Domain.Models;
 using Xunit.Internal;
 
@@ -53,10 +53,10 @@ public class UserTests
         const string userName = "W", passwordHash = "<Hash>", role = AppRoles.USER;
 
         // Act
-        DomainException? message = Assert.Throws<DomainException>(() => User.Register(userName, passwordHash, role));
+        DomainException? exception = Assert.Throws<DomainException>(() => User.Register(userName, passwordHash, role));
 
         // Assert
-        Assert.Equal("UserName must be between 5 and 50 chars long", message.Message);
+        Assert.Equal("UserName must be between 5 and 50 chars long", exception.Message);
     }
 
     [Fact]
@@ -72,10 +72,10 @@ public class UserTests
         }
 
         // Act
-        DomainException? message = Assert.Throws<DomainException>(() => User.Register(userName, passwordHash, role));
+        DomainException? exception = Assert.Throws<DomainException>(() => User.Register(userName, passwordHash, role));
 
         // Assert
-        Assert.Equal("UserName must be between 5 and 50 chars long", message.Message);
+        Assert.Equal("UserName must be between 5 and 50 chars long", exception.Message);
     }
 
     [Fact]
@@ -85,10 +85,10 @@ public class UserTests
         const string userName = "maxsmg", passwordHash = " ", role = AppRoles.USER;
 
         // Act
-        DomainException? message = Assert.Throws<DomainException>(() => User.Register(userName, passwordHash, role));
+        DomainException? exception = Assert.Throws<DomainException>(() => User.Register(userName, passwordHash, role));
 
         // Assert
-        Assert.Equal("PasswordHash cannot be empty", message.Message);
+        Assert.Equal("PasswordHash cannot be empty", exception.Message);
     }
 
     [Fact]
@@ -98,9 +98,9 @@ public class UserTests
         const string userName = "maxsmg", passwordHash = "<Hash>", role = "wrong";
 
         // Act
-        DomainException? message = Assert.Throws<DomainException>(() => User.Register(userName, passwordHash, role));
+        DomainException? exception = Assert.Throws<DomainException>(() => User.Register(userName, passwordHash, role));
 
         // Assert
-        Assert.Equal("Role is invalid", message.Message);
+        Assert.Equal("Role is invalid", exception.Message);
     }
 }

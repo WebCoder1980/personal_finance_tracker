@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PersonalFinanceTracker.ApiGateway\PersonalFinanceTracker.ApiGateway.csproj" />
+    <ProjectReference Include="..\PersonalFinanceTracker.Transactions.Infrastructure\PersonalFinanceTracker.Transactions.Infrastructure.csproj" />
     <ProjectReference Include="..\Users\PersonalFinanceTracker.Users.Infrastructure\PersonalFinanceTracker.Users.Infrastructure.csproj" />
   </ItemGroup>
 

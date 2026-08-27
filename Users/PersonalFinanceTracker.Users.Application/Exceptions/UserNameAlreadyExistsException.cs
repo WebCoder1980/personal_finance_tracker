@@ -1,4 +1,4 @@
-﻿using PersonalFinanceTracker.Users.Domain.Exceptions;
+﻿using PersonalFinanceTracker.ServiceDefaults.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;

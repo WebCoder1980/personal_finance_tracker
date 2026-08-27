@@ -1,5 +1,5 @@
-﻿using PersonalFinanceTracker.Users.Domain.Constants;
-using PersonalFinanceTracker.Users.Domain.Exceptions;
+﻿using PersonalFinanceTracker.ServiceDefaults.Constants;
+using PersonalFinanceTracker.ServiceDefaults.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;

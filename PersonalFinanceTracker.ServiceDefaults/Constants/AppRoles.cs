@@ -1,4 +1,4 @@
-﻿namespace PersonalFinanceTracker.Users.Domain.Constants
+﻿namespace PersonalFinanceTracker.ServiceDefaults.Constants
 {
     public class AppRoles
     {

@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PersonalFinanceTracker.Users.Application.Ports.Out;
-using PersonalFinanceTracker.Users.Domain.Constants;
 using PersonalFinanceTracker.Users.Domain.Models;
-using PersonalFinanceTracker.Users.Infrastructure.Utils;
 
 namespace PersonalFinanceTracker.Users.Infrastructure.Data
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PersonalFinanceTracker.Users.Domain.Exceptions
+namespace PersonalFinanceTracker.ServiceDefaults.Exceptions
 {
     public class DomainException : Exception
     {
