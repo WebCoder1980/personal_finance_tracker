@@ -7,6 +7,6 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Ports.In
 {
     public interface ICategoryDeleteHandler
     {
-        Task ExecuteAsync(Guid Id, Guid UserId, CancellationToken token);
+        Task ExecuteAsync(CategoryDeleteCommand command, CancellationToken token);
     }
 }

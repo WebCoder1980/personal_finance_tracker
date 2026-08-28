@@ -5,7 +5,6 @@ using PersonalFinanceTracker.Transactions.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
 {
@@ -20,12 +19,12 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
             _categoryRepository = categoryRepository;
         }
 
-        public async Task ExecuteAsync(Guid id, Guid userId, CancellationToken token)
+        public async Task ExecuteAsync(CategoryDeleteCommand command, CancellationToken token)
         {
-            Category category = await _categoryRepository.GetByIdAsync(id, token)
+            Category category = await _categoryRepository.GetByIdAsync(command.Id, token)
                 ?? throw new DomainException("Category was not found");
 
-            if (!category.HasAccess(userId))
+            if (!category.HasAccess(command.UserId))
             {
                 throw new PermissionDeniedException();
             }

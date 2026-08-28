@@ -4,7 +4,6 @@ using PersonalFinanceTracker.Transactions.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
 {
@@ -17,11 +16,11 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
             _categoryRepository = categoryRepository;
         }
 
-        public async Task<IEnumerable<Category>> ExecuteAsync(Guid userId, CancellationToken token)
+        public async Task<IEnumerable<CategoryGetResult>> ExecuteAsync(CategoryGetCommand command, CancellationToken token)
         {
-            IEnumerable<Category> categories = await _categoryRepository.GetByUserIdAsync(userId, token);
+            IEnumerable<Category> category = await _categoryRepository.GetByUserIdAsync(command.UserId, token);
 
-            return categories;
+            return category.Select(category => new CategoryGetResult(category.Id, category.UserId, category.Name, category.Type, category.MonthlyAmount));
         }
     }
 }
