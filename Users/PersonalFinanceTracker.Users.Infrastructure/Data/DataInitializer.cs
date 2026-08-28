@@ -28,6 +28,7 @@ namespace PersonalFinanceTracker.Users.Infrastructure.Data
             using IServiceScope scope = _scopeFactory.CreateScope();
 
             IUserRegisterHandler userRegisterHandler = scope.ServiceProvider.GetRequiredService<IUserRegisterHandler>();
+            IUnitOfWork unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
             IUserRepository userRepository = scope.ServiceProvider.GetRequiredService<IUserRepository>();
 
             foreach (UserRegisterCommand command in commands)
@@ -39,6 +40,8 @@ namespace PersonalFinanceTracker.Users.Infrastructure.Data
 
                 await userRegisterHandler.ExecuteAsync(command, token);
             }
+
+            await unitOfWork.SaveChangesAsync(token);
         }
 
         public async Task StopAsync(CancellationToken token)

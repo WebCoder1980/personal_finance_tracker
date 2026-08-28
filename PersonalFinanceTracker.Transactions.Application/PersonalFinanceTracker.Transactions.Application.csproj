@@ -10,4 +10,10 @@
     <ProjectReference Include="..\PersonalFinanceTracker.Transactions.Domain\PersonalFinanceTracker.Transactions.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Transactions\Handlers\" />
+    <Folder Include="Transactions\Ports\In\" />
+    <Folder Include="Transactions\Ports\Out\" />
+  </ItemGroup>
+
 </Project>

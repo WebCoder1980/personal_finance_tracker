@@ -26,6 +26,8 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+builder.Services.AddHostedService<DataInitializer>();
+
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();

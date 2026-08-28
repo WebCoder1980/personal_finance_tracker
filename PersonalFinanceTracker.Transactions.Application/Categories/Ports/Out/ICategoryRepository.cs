@@ -9,6 +9,7 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Ports.Out
     {
         Task<IEnumerable<Category>> GetByUserIdAsync(Guid userId, CancellationToken token);
         Task<Category?> GetByIdAsync(Guid id, CancellationToken token);
+        Task<bool> IsEmpty(CancellationToken token);
 
         Task SaveAsync(Category category, CancellationToken token);
 

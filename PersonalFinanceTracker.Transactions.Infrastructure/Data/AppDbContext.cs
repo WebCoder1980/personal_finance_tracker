@@ -16,7 +16,7 @@ namespace PersonalFinanceTracker.Transactions.Infrastructure.Data
                 entity.HasKey(x => x.Id);
                 entity.Property(x => x.Name).IsRequired();
                 entity.Property(x => x.Type).IsRequired();
-                entity.Property(x => x.MonthlyAmount).IsRequired();
+                entity.Property(x => x.MonthlyAmount).IsRequired(false);
             });
         }
     }

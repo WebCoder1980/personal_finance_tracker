@@ -9,18 +9,16 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
 {
     public class CategoryGetHandler : ICategoryGetHandler
     {
-        private readonly ICurrentUser _currentUser;
         private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryGetHandler(ICurrentUser currentUser, ICategoryRepository categoryRepository)
+        public CategoryGetHandler(ICategoryRepository categoryRepository)
         {
-            _currentUser = currentUser;
             _categoryRepository = categoryRepository;
         }
 
-        public async Task<IEnumerable<CategoryGetResult>> ExecuteAsync(CancellationToken token)
+        public async Task<IEnumerable<CategoryGetResult>> ExecuteAsync(CategoryGetCommand command, CancellationToken token)
         {
-            IEnumerable<Category> category = await _categoryRepository.GetByUserIdAsync(_currentUser.Id, token);
+            IEnumerable<Category> category = await _categoryRepository.GetByUserIdAsync(command.UserId, token);
 
             return category.Select(category => new CategoryGetResult(category.Id, category.UserId, category.Name, category.Type, category.MonthlyAmount));
         }

@@ -15,6 +15,7 @@ namespace PersonalFinanceTracker.Transactions.Infrastructure.Data
 
         public async Task<IEnumerable<Category>> GetByUserIdAsync(Guid userId, CancellationToken token) => await _db.Categories.Where(category => category.UserId == userId).ToListAsync();
         public async Task<Category?> GetByIdAsync(Guid id, CancellationToken token) => await _db.Categories.Where(category => category.Id == id).FirstOrDefaultAsync(token);
+        public async Task<bool> IsEmpty(CancellationToken token) => !await _db.Categories.AnyAsync(token);
 
         public async Task SaveAsync(Category category, CancellationToken token) => await _db.Categories.AddAsync(category, token);
 
