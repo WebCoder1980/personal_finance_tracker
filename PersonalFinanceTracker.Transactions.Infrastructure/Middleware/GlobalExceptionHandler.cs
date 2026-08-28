@@ -3,7 +3,7 @@ using PersonalFinanceTracker.ServiceDefaults.Exceptions;
 using PersonalFinanceTracker.Transactions.Infrastructure.Dtos;
 using System.Net;
 
-namespace PersonalFinanceTracker.Users.Infrastructure.Middleware
+namespace PersonalFinanceTracker.Transactions.Infrastructure.Middleware
 {
     public sealed class GlobalExceptionHandler : IExceptionHandler
     {

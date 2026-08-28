@@ -8,18 +8,22 @@ namespace PersonalFinanceTracker.Users.Domain.Models
 {
     public class User
     {
-        public Guid Id { get; private set; } = Guid.NewGuid();
-        public string UserName { get; private set; } = string.Empty;
-        public string PasswordHash { get; private set; } = string.Empty;
-        public string Role { get; private set; } = AppRoles.USER;
+        public Guid Id { get; private set; }
+        public string UserName { get; private set; }
+        public string PasswordHash { get; private set; }
+        public string Role { get; private set; }
 
         private User()
         {
+
         }
 
-        public static User Register(string userName, string passwordHash, string role)
+        public static User Register(string userName, string passwordHash) => Register(Guid.NewGuid(), userName, passwordHash, AppRoles.USER);
+        public static User Register(Guid id, string userName, string passwordHash, string role)
         {
             User user = new User();
+
+            user.Id = id;
 
             if (string.IsNullOrWhiteSpace(userName))
             {
@@ -37,10 +41,6 @@ namespace PersonalFinanceTracker.Users.Domain.Models
             }
             user.PasswordHash = passwordHash;
 
-            if (!AppRoles.IsValid(role))
-            {
-                throw new DomainException("Role is invalid");
-            }
             user.Role = role;
 
             return user;

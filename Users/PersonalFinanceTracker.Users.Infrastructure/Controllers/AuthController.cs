@@ -22,7 +22,7 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<ActionResult<UserRegisterResult>> Register(UserRegisterRequest request, CancellationToken token)
     {
-        UserRegisterCommand command = new(request.UserName, request.Password, AppRoles.USER);
+        UserRegisterCommand command = new(request.UserName, request.Password);
         UserRegisterResult result = await _userRegisterHandler.ExecuteAsync(command, token);
         return Ok(result);
     }

@@ -4,7 +4,7 @@ using PersonalFinanceTracker.Transactions.Application.Categories.Handlers;
 using PersonalFinanceTracker.Transactions.Application.Categories.Ports.In;
 using PersonalFinanceTracker.Transactions.Infrastructure.Dtos;
 
-namespace PersonalFinanceTracker.Transactions.Infrastructure.Categories
+namespace PersonalFinanceTracker.Transactions.Infrastructure.Controllers
 {
     [ApiController]
     [Route("[controller]")]

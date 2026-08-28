@@ -28,9 +28,10 @@ namespace PersonalFinanceTracker.Users.Application.Handlers
             }
 
             User user = User.Register(
+                command.Id,
                 command.UserName,
                 _passwordHasher.Hash(command.Password),
-                command.Role
+                command.Role    
             );
             await _userRepository.SaveAsync(user, token);
             await _unitOfWork.SaveChangesAsync(token);
