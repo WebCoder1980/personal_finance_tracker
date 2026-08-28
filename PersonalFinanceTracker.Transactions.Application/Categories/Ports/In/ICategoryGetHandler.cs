@@ -7,6 +7,6 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Ports.In
 {
     public interface ICategoryGetHandler
     {
-        Task<IEnumerable<CategoryGetResult>> ExecuteAsync(CategoryGetCommand command, CancellationToken token);
+        Task<IEnumerable<CategoryGetResult>> ExecuteAsync(CancellationToken token);
     }
 }

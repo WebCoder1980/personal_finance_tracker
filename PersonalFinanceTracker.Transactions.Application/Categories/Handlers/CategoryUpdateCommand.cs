@@ -5,5 +5,5 @@ using System.Text;
 
 namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
 {
-    public record CategoryUpdateCommand(Guid Id, Guid UserId, string Name, double? MonthlyAmount);
+    public record CategoryUpdateCommand(Guid Id, string Name, double? MonthlyAmount);
 }

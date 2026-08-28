@@ -12,6 +12,6 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Ports.Out
 
         Task SaveAsync(Category category, CancellationToken token);
 
-        Task DeleteAsync(Category category, CancellationToken token);
+        Task DeleteAsync(Category category);
     }
 }

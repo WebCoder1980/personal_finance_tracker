@@ -10,11 +10,13 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
 {
     public class CategoryUpdateHandler : ICategoryUpdateHandler
     {
+        private readonly ICurrentUser _currentUser;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryUpdateHandler(IUnitOfWork unitOfWork, ICategoryRepository categoryRepository)
+        public CategoryUpdateHandler(ICurrentUser currentUser, IUnitOfWork unitOfWork, ICategoryRepository categoryRepository)
         {
+            _currentUser = currentUser;
             _unitOfWork = unitOfWork;
             _categoryRepository = categoryRepository;
         }
@@ -24,7 +26,7 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
             Category category = await _categoryRepository.GetByIdAsync(command.Id, token)
                 ?? throw new DomainException("Category was not found");
 
-            if (!category.HasAccess(command.UserId))
+            if (!category.HasAccess(_currentUser.Id))
             {
                 throw new PermissionDeniedException();
             }

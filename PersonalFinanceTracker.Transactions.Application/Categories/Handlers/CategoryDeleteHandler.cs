@@ -10,11 +10,13 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
 {
     public class CategoryDeleteHandler : ICategoryDeleteHandler
     {
+        private readonly ICurrentUser _currentUser;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryDeleteHandler(IUnitOfWork unitOfWork, ICategoryRepository categoryRepository)
+        public CategoryDeleteHandler(ICurrentUser currentUser, IUnitOfWork unitOfWork, ICategoryRepository categoryRepository)
         {
+            _currentUser = currentUser;
             _unitOfWork = unitOfWork;
             _categoryRepository = categoryRepository;
         }
@@ -24,12 +26,12 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
             Category category = await _categoryRepository.GetByIdAsync(command.Id, token)
                 ?? throw new DomainException("Category was not found");
 
-            if (!category.HasAccess(command.UserId))
+            if (!category.HasAccess(_currentUser.Id))
             {
                 throw new PermissionDeniedException();
             }
 
-            await _categoryRepository.DeleteAsync(category, token);
+            await _categoryRepository.DeleteAsync(category);
             await _unitOfWork.SaveChangesAsync(token);
         }
     }
