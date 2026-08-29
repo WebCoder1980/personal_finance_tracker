@@ -2,6 +2,10 @@ using PersonalFinanceTracker.ServiceDefaults;
 using PersonalFinanceTracker.Transactions.Application.Categories.Handlers;
 using PersonalFinanceTracker.Transactions.Application.Categories.Ports.In;
 using PersonalFinanceTracker.Transactions.Application.Categories.Ports.Out;
+using PersonalFinanceTracker.Transactions.Application.Common.Ports.Out;
+using PersonalFinanceTracker.Transactions.Application.Transactions.Handlers;
+using PersonalFinanceTracker.Transactions.Application.Transactions.Ports.In;
+using PersonalFinanceTracker.Transactions.Application.Transactions.Ports.Out;
 using PersonalFinanceTracker.Transactions.Infrastructure.Data;
 using PersonalFinanceTracker.Transactions.Infrastructure.Util;
 
@@ -22,7 +26,13 @@ builder.Services.AddScoped<ICategoryCreateHandler, CategoryCreateHandler>();
 builder.Services.AddScoped<ICategoryUpdateHandler, CategoryUpdateHandler>();
 builder.Services.AddScoped<ICategoryDeleteHandler, CategoryDeleteHandler>();
 
+builder.Services.AddScoped<ITransactionGetHandler, TransactionGetHandler>();
+builder.Services.AddScoped<ITransactionCreateHandler, TransactionCreateHandler>();
+builder.Services.AddScoped<ITransactionUpdateHandler, TransactionUpdateHandler>();
+builder.Services.AddScoped<ITransactionDeleteHandler, TransactionDeleteHandler>();
+
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 

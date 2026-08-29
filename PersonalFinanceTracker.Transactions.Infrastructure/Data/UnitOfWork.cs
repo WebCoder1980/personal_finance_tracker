@@ -1,4 +1,4 @@
-﻿using PersonalFinanceTracker.Transactions.Application.Categories.Ports.Out;
+﻿using PersonalFinanceTracker.Transactions.Application.Common.Ports.Out;
 
 namespace PersonalFinanceTracker.Transactions.Infrastructure.Data
 {

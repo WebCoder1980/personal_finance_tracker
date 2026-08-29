@@ -19,6 +19,6 @@ namespace PersonalFinanceTracker.Transactions.Infrastructure.Data
 
         public async Task SaveAsync(Category category, CancellationToken token) => await _db.Categories.AddAsync(category, token);
 
-        public async Task DeleteAsync(Category category) => _db.Categories.Remove(category);
+        public void DeleteAsync(Category category) => _db.Categories.Remove(category);
     }
 }

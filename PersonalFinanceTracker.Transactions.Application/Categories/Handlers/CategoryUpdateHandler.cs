@@ -1,6 +1,7 @@
 ﻿using PersonalFinanceTracker.ServiceDefaults.Exceptions;
 using PersonalFinanceTracker.Transactions.Application.Categories.Ports.In;
 using PersonalFinanceTracker.Transactions.Application.Categories.Ports.Out;
+using PersonalFinanceTracker.Transactions.Application.Common.Ports.Out;
 using PersonalFinanceTracker.Transactions.Domain;
 using System;
 using System.Collections.Generic;

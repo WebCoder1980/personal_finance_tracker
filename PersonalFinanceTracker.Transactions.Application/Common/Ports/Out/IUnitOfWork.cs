@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PersonalFinanceTracker.Transactions.Application.Categories.Ports.Out
+namespace PersonalFinanceTracker.Transactions.Application.Common.Ports.Out
 {
     public interface IUnitOfWork
     {

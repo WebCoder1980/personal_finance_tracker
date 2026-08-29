@@ -1,6 +1,7 @@
 ﻿using PersonalFinanceTracker.ServiceDefaults.Exceptions;
 using PersonalFinanceTracker.Transactions.Application.Categories.Ports.In;
 using PersonalFinanceTracker.Transactions.Application.Categories.Ports.Out;
+using PersonalFinanceTracker.Transactions.Application.Common.Ports.Out;
 using PersonalFinanceTracker.Transactions.Domain;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
                 throw new PermissionDeniedException();
             }
 
-            await _categoryRepository.DeleteAsync(category);
+            _categoryRepository.DeleteAsync(category);
             await _unitOfWork.SaveChangesAsync(token);
         }
     }

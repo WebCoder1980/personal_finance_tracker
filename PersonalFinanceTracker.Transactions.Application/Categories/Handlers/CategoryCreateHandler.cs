@@ -1,5 +1,6 @@
 ﻿using PersonalFinanceTracker.Transactions.Application.Categories.Ports.In;
 using PersonalFinanceTracker.Transactions.Application.Categories.Ports.Out;
+using PersonalFinanceTracker.Transactions.Application.Common.Ports.Out;
 using PersonalFinanceTracker.Transactions.Domain;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
 
         public async Task<CategoryCreateResult> ExecuteAsync(CategoryCreateCommand command, CancellationToken token)
         {
-            Category category = Category.Create(command.UserId, command.Name, command.Type, command.MonthlyAmount);
+            Category category = Category.Create(command.Id, command.UserId, command.Name, command.Type, command.MonthlyAmount);
 
             await _categoryRepository.SaveAsync(category, token);
             await _unitOfWork.SaveChangesAsync(token);

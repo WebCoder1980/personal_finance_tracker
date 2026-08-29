@@ -10,16 +10,23 @@ namespace PersonalFinanceTracker.Transactions.Domain
 {
     public class Category
     {
-        public Guid Id { get; private set; } = Guid.NewGuid();
+        public Guid Id { get; private set; }
         public Guid UserId { get; private set; }
-        public string Name { get; private set; } = null!;
+        public string Name { get; private set; } = string.Empty;
         public CategoryType Type { get; private set; }
         public double? MonthlyAmount { get; private set; }
         public ICollection<Transaction> Transactions { get; private set; } = new List<Transaction>();
-        
-        public static Category Create(Guid userId, string name, CategoryType type, double? monthlyAmount = null)
+
+        public static Category Create(Guid userId, string name, CategoryType type, double? monthlyAmount) => Create(Guid.NewGuid(), userId, name, type, monthlyAmount);
+        public static Category Create(Guid id, Guid userId, string name, CategoryType type, double? monthlyAmount)
         {
             Category category = new();
+
+            if (id == Guid.Empty)
+            {
+                throw new DomainException("Id cannot be empty");
+            }
+            category.Id = id;
 
             if (userId == Guid.Empty)
             {
