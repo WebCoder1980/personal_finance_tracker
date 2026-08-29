@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PersonalFinanceTracker.ServiceDefaults.Exceptions
+﻿namespace PersonalFinanceTracker.ServiceDefaults.Exceptions
 {
     public class DomainException : Exception
     {
-        public DomainException(string message) : base(message) {
-        
+        public DomainException(string message) : base(message)
+        {
+
         }
     }
 }

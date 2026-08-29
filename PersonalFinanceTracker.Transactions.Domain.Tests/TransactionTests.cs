@@ -1,8 +1,4 @@
 ﻿using PersonalFinanceTracker.ServiceDefaults.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace PersonalFinanceTracker.Transactions.Domain.Tests
 {

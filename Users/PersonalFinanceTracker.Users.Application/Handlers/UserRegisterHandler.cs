@@ -2,10 +2,6 @@
 using PersonalFinanceTracker.Users.Application.Ports.In;
 using PersonalFinanceTracker.Users.Application.Ports.Out;
 using PersonalFinanceTracker.Users.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace PersonalFinanceTracker.Users.Application.Handlers
 {
@@ -31,7 +27,7 @@ namespace PersonalFinanceTracker.Users.Application.Handlers
                 command.Id,
                 command.UserName,
                 _passwordHasher.Hash(command.Password),
-                command.Role    
+                command.Role
             );
             await _userRepository.SaveAsync(user, token);
             await _unitOfWork.SaveChangesAsync(token);

@@ -1,6 +1,4 @@
-﻿using PersonalFinanceTracker.Transactions.Application.Categories.Ports.Out;
-
-namespace PersonalFinanceTracker.Transactions.Infrastructure.Util
+﻿namespace PersonalFinanceTracker.Transactions.Infrastructure.Util
 {
     public class CurrentUser : ICurrentUser
     {

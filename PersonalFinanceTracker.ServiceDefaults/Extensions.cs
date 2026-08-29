@@ -1,22 +1,18 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.ServiceDiscovery;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
-using System.Data;
-using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 
 namespace PersonalFinanceTracker.ServiceDefaults;
 

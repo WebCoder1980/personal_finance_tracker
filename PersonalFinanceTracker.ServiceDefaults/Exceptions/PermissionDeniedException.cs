@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PersonalFinanceTracker.ServiceDefaults.Exceptions
+﻿namespace PersonalFinanceTracker.ServiceDefaults.Exceptions
 {
     public class PermissionDeniedException : DomainException
     {

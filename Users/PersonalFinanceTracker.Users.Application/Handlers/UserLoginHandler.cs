@@ -2,9 +2,6 @@
 using PersonalFinanceTracker.Users.Application.Ports.In;
 using PersonalFinanceTracker.Users.Application.Ports.Out;
 using PersonalFinanceTracker.Users.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PersonalFinanceTracker.Users.Application.Handlers
 {

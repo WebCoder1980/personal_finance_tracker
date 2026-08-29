@@ -1,5 +1,4 @@
-﻿using PersonalFinanceTracker.Transactions.Domain;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace PersonalFinanceTracker.Transactions.Infrastructure.Dtos
 {

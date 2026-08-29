@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PersonalFinanceTracker.Users.Application.Ports.Out
+﻿namespace PersonalFinanceTracker.Users.Application.Ports.Out
 {
     public interface IPasswordHasher
     {

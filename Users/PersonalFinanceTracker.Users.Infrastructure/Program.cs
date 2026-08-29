@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using PersonalFinanceTracker.ServiceDefaults;
 using PersonalFinanceTracker.Users.Application.Handlers;
 using PersonalFinanceTracker.Users.Application.Ports.In;

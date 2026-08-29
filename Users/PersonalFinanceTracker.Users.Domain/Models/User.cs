@@ -1,8 +1,5 @@
 ﻿using PersonalFinanceTracker.ServiceDefaults.Constants;
 using PersonalFinanceTracker.ServiceDefaults.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PersonalFinanceTracker.Users.Domain.Models
 {
@@ -34,7 +31,7 @@ namespace PersonalFinanceTracker.Users.Domain.Models
                 throw new DomainException("UserName must be between 5 and 50 chars long");
             }
             user.UserName = userName;
-            
+
             if (string.IsNullOrWhiteSpace(passwordHash))
             {
                 throw new DomainException("PasswordHash cannot be empty");

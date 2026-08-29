@@ -65,7 +65,7 @@ namespace PersonalFinanceTracker.Transactions.Infrastructure.Data
 
         public async Task StopAsync(CancellationToken token)
         {
-            
+
         }
     }
 }

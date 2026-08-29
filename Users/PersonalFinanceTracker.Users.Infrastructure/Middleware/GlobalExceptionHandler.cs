@@ -39,7 +39,7 @@ namespace PersonalFinanceTracker.Users.Infrastructure.Middleware
                 _ => (
                     (int)HttpStatusCode.InternalServerError,
                     "Internal server error")
-                };
+            };
 
             context.Response.StatusCode = statusCode;
 

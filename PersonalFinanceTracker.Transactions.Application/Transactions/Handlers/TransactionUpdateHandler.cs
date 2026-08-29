@@ -3,9 +3,6 @@ using PersonalFinanceTracker.Transactions.Application.Common.Ports.Out;
 using PersonalFinanceTracker.Transactions.Application.Transactions.Ports.In;
 using PersonalFinanceTracker.Transactions.Application.Transactions.Ports.Out;
 using PersonalFinanceTracker.Transactions.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PersonalFinanceTracker.Transactions.Application.Transactions.Handlers
 {

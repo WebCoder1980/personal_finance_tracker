@@ -1,7 +1,6 @@
 using PersonalFinanceTracker.ServiceDefaults.Constants;
 using PersonalFinanceTracker.ServiceDefaults.Exceptions;
 using PersonalFinanceTracker.Users.Domain.Models;
-using Xunit.Internal;
 
 namespace PersonalFinanceTracker.Users.Domain.Tests;
 

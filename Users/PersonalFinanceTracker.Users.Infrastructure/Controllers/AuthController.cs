@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using PersonalFinanceTracker.ServiceDefaults.Constants;
 using PersonalFinanceTracker.Users.Application.Handlers;
 using PersonalFinanceTracker.Users.Application.Ports.In;
 using PersonalFinanceTracker.Users.Infrastructure.Dtos;

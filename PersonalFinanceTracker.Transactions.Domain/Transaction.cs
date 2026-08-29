@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Formatters;
-using PersonalFinanceTracker.ServiceDefaults.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Text.Json.Serialization;
+﻿using PersonalFinanceTracker.ServiceDefaults.Exceptions;
 
 namespace PersonalFinanceTracker.Transactions.Domain
 {
@@ -27,7 +21,7 @@ namespace PersonalFinanceTracker.Transactions.Domain
 
         }
 
-        public static Transaction Create(Guid categoryId, DateOnly date, double value, string? comment) => Create(Guid.NewGuid(), categoryId, date, value, comment); 
+        public static Transaction Create(Guid categoryId, DateOnly date, double value, string? comment) => Create(Guid.NewGuid(), categoryId, date, value, comment);
         public static Transaction Create(Guid id, Guid categoryId, DateOnly date, double value, string? comment)
         {
             Transaction transaction = new();

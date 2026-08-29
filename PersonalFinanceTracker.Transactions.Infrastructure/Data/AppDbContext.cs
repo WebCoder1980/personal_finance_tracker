@@ -14,7 +14,8 @@ namespace PersonalFinanceTracker.Transactions.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>(entity => {
+            modelBuilder.Entity<Category>(entity =>
+            {
                 entity.HasKey(x => x.Id);
                 entity.Property(x => x.Name).IsRequired();
                 entity.Property(x => x.Type).IsRequired();

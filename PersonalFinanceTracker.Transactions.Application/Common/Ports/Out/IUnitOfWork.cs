@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PersonalFinanceTracker.Transactions.Application.Common.Ports.Out
+﻿namespace PersonalFinanceTracker.Transactions.Application.Common.Ports.Out
 {
     public interface IUnitOfWork
     {
