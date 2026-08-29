@@ -7,11 +7,15 @@ using PersonalFinanceTracker.Transactions.Application.Transactions.Handlers;
 using PersonalFinanceTracker.Transactions.Application.Transactions.Ports.In;
 using PersonalFinanceTracker.Transactions.Application.Transactions.Ports.Out;
 using PersonalFinanceTracker.Transactions.Infrastructure.Data;
+using PersonalFinanceTracker.Transactions.Infrastructure.Middleware;
 using PersonalFinanceTracker.Transactions.Infrastructure.Util;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 // Add services to the container.
 
@@ -51,6 +55,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseExceptionHandler();
 
 app.UseAuthentication();
 app.UseAuthorization();

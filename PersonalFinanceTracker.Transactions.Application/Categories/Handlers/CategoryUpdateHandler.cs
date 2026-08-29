@@ -20,7 +20,7 @@ namespace PersonalFinanceTracker.Transactions.Application.Categories.Handlers
         public async Task<CategoryUpdateResult> ExecuteAsync(CategoryUpdateCommand command, CancellationToken token)
         {
             Category category = await _categoryRepository.GetByIdAsync(command.Id, token)
-                ?? throw new DomainException("Category was not found");
+                ?? throw new NotFoundException("Category was not found");
 
             if (!category.HasAccess(command.UserId))
             {

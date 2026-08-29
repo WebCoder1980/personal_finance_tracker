@@ -20,7 +20,7 @@ namespace PersonalFinanceTracker.Transactions.Application.Transactions.Handlers
         public async Task<TransactionUpdateResult> ExecuteAsync(TransactionUpdateCommand command, CancellationToken token)
         {
             Transaction transaction = await _transactionRepository.GetByIdAsync(command.Id, token)
-                ?? throw new DomainException("Transaction was not found");
+                ?? throw new NotFoundException("Transaction was not found");
 
             if (!transaction.HasAccess(command.UserId))
             {

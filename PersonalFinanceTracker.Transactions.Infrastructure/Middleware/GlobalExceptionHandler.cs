@@ -23,6 +23,9 @@ namespace PersonalFinanceTracker.Transactions.Infrastructure.Middleware
 
             (int statusCode, string message) = exception switch
             {
+                NotFoundException ex => (
+                    (int)HttpStatusCode.NotFound,
+                    "Not found error"),
                 DomainException ex => (
                     (int)HttpStatusCode.BadRequest,
                     "Invalid data error"),
