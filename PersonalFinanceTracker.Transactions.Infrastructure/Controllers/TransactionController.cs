@@ -39,7 +39,7 @@ namespace PersonalFinanceTracker.Transactions.Infrastructure.Controllers
         [Authorize]
         public async Task<ActionResult<TransactionCreateResult>> Create(TransactionCreateRequest request, CancellationToken token)
         {
-            TransactionCreateCommand command = new(_currentUser.Id, request.Date, request.Value, request.Comment);
+            TransactionCreateCommand command = new(_currentUser.Id, request.CategoryId, request.Date, request.Value, request.Comment);
 
             return Ok(await _TransactionCreateHandler.ExecuteAsync(command, token));
         }
